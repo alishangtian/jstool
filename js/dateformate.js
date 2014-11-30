@@ -1,6 +1,6 @@
-//½«³¤ÕûĞÍµÄÊ±¼ä×ª»¯Îª¾àÀëÏÖÔÚµÄÊ±¼ä£¬¸Õ¸Õ£¬¼¸·ÖÖÓÇ°£¬¼¸Ğ¡Ê±Ç°£¬¼¸Ê±¼¸·Ö£¬×òÌì¼¸Ê±¼¸·Ö£¬Ç°Ìì¼¸Ê±¼¸·Ö£¬
-// ¼¸ÔÂ¼¸ÈÕ¼¸Ê±¼¸·Ö£¬ÄêÔÂÈÕÊ±·ÖµÄĞÎÊ½
-//²ÎÊı utcDateÎªÏëÒª×ª»¯µÄÊ±¼ä£¬ÎªnumberÀàĞÍ£¬ºóÌ¨¶ÔÓ¦ÏàÓ¦µÄ³¤ÕûĞÍ
+//å°†é•¿æ•´å‹çš„æ—¶é—´è½¬åŒ–ä¸ºè·ç¦»ç°åœ¨çš„æ—¶é—´ï¼Œåˆšåˆšï¼Œå‡ åˆ†é’Ÿå‰ï¼Œå‡ å°æ—¶å‰ï¼Œå‡ æ—¶å‡ åˆ†ï¼Œæ˜¨å¤©å‡ æ—¶å‡ åˆ†ï¼Œå‰å¤©å‡ æ—¶å‡ åˆ†ï¼Œ
+// å‡ æœˆå‡ æ—¥å‡ æ—¶å‡ åˆ†ï¼Œå¹´æœˆæ—¥æ—¶åˆ†çš„å½¢å¼
+//å‚æ•° utcDateä¸ºæƒ³è¦è½¬åŒ–çš„æ—¶é—´ï¼Œä¸ºnumberç±»å‹ï¼Œåå°å¯¹åº”ç›¸åº”çš„é•¿æ•´å‹
 function smartDateFormat(utcDate){ 
 
     var crdate = new Date(utcDate);
@@ -31,121 +31,121 @@ function smartDateFormat(utcDate){
 	}
 
 	if(cryear != curryear){
-    /* Äê²»Í¬ */
+    /* å¹´ä¸åŒ */
 		if(crmonth == 12 && currmonth == 1){
-	    /* ÔÂÏàÁÚ */
+	    /* æœˆç›¸é‚» */
 			var daydis = 31-crday+currday;
 		    if(daydis == 1){
-			/* ÏàÁÚÈÕ */
-			    var hourdis = 24-crhour+currhour;//Ê±²î
+			/* ç›¸é‚»æ—¥ */
+			    var hourdis = 24-crhour+currhour;//æ—¶å·®
 				if(hourdis == 1) {
-				/* Ê±ÏàÁ¬ */
+				/* æ—¶ç›¸è¿ */
 					var mindis = 60-crminute+currminute;
 					if(mindis > 60){
-						 return hourdis+"Ğ¡Ê±Ç°";
+						 return hourdis+"å°æ—¶å‰";
 					} else {
-						 return mindis+"·ÖÖÓÇ°";
+						 return mindis+"åˆ†é’Ÿå‰";
 					}
 				} else if(hourdis == 2) {
-					  return hourdis +"Ğ¡Ê±Ç°";
+					  return hourdis +"å°æ—¶å‰";
 				} else {
-					  return "×òÌì" + " " + crhour+":"+crminute;
+					  return "æ˜¨å¤©" + " " + crhour+":"+crminute;
 				}
 			} else if(daydis == 2) {
-			    return "Ç°Ìì" +" "+ crhour+":"+crminute;;
+			    return "å‰å¤©" +" "+ crhour+":"+crminute;;
 			} else {
-			    return cryear +"Äê"+ crmonth +"ÔÂ"+ crday +"ÈÕ"+" "+crhour+":"+crminute;
+			    return cryear +"å¹´"+ crmonth +"æœˆ"+ crday +"æ—¥"+" "+crhour+":"+crminute;
 			}
 	    } else {
-		/* ÔÂ²»ÏàÁÚ */
-		    return cryear +"Äê"+ crmonth +"ÔÂ"+ crday +"ÈÕ"+" "+crhour+":"+crminute;
+		/* æœˆä¸ç›¸é‚» */
+		    return cryear +"å¹´"+ crmonth +"æœˆ"+ crday +"æ—¥"+" "+crhour+":"+crminute;
 		}
 	} else {
-    /* ÄêÏàÍ¬ */
+    /* å¹´ç›¸åŒ */
 		if(crmonth != currmonth){
-        /* ÔÂ²»Í¬ */
+        /* æœˆä¸åŒ */
 			if(crmonth - currmonth == 1){
-            /* ÔÂÏàÁÚ */
+            /* æœˆç›¸é‚» */
 				var currdaycount = getDayOfMonth(cryear,crmonth);
 			    var daydis = currdaycount-crday+currday;
 				if(daydis == 1){
-				/* ÏàÁÚÈÕ */
-				    var hourdis = 24-crhour+currhour;//Ê±²î
+				/* ç›¸é‚»æ—¥ */
+				    var hourdis = 24-crhour+currhour;//æ—¶å·®
 					if(hourdis == 1) {
-					/* Ê±ÏàÁ¬ */
+					/* æ—¶ç›¸è¿ */
 					    var mindis = 60-crminute+currminute;
 						if(mindis > 60){
-						    return hourdis+"Ğ¡Ê±Ç°";
+						    return hourdis+"å°æ—¶å‰";
 						} else {
-						    return mindis+"·ÖÖÓÇ°";
+						    return mindis+"åˆ†é’Ÿå‰";
 						}
 					} else if(hourdis == 2) {
-					    return hourdis +"Ğ¡Ê±Ç°";
+					    return hourdis +"å°æ—¶å‰";
 					} else {
-					    return "×òÌì" + " " + crhour+":"+crminute;
+					    return "æ˜¨å¤©" + " " + crhour+":"+crminute;
 					}
 				} else if(daydis == 2){
-				    return "Ç°Ìì" + " "+ crhour+":"+crminute;;
+				    return "å‰å¤©" + " "+ crhour+":"+crminute;;
 				} else {
-				    return crmonth + "ÔÂ" + crday +"ÈÕ" + " " +crhour+":"+crminute;
+				    return crmonth + "æœˆ" + crday +"æ—¥" + " " +crhour+":"+crminute;
 				}
 			} else {
-            /* ÔÂ²»ÏàÁÚ */
-				return crmonth + "ÔÂ" + crday +"ÈÕ" + " " +crhour+":"+crminute;
+            /* æœˆä¸ç›¸é‚» */
+				return crmonth + "æœˆ" + crday +"æ—¥" + " " +crhour+":"+crminute;
 			}
 		} else {
-        /* ÔÂÏàÍ¬ */
+        /* æœˆç›¸åŒ */
 			if(crday != currday){
-			/* ÈÕ²»Í¬ */
-				var daydis = currday - crday;//ÈÕ²î
+			/* æ—¥ä¸åŒ */
+				var daydis = currday - crday;//æ—¥å·®
 				if(daydis == 1){
-			    /* ÏàÁÚÈÕ */
-					var hourdis = 24-crhour+currhour;//Ê±²î
+			    /* ç›¸é‚»æ—¥ */
+					var hourdis = 24-crhour+currhour;//æ—¶å·®
 					if(hourdis == 1) {
-					/* Ê±ÏàÁ¬ */
+					/* æ—¶ç›¸è¿ */
 					    var mindis = 60-crminute+currminute;
 						if(mindis > 60){
-						    return hourdis+"Ğ¡Ê±Ç°";
+						    return hourdis+"å°æ—¶å‰";
 						} else {
-						    return mindis+"·ÖÖÓÇ°";
+						    return mindis+"åˆ†é’Ÿå‰";
 						}
 					} else if(hourdis == 2) {
-					    return hourdis +"Ğ¡Ê±Ç°";
+					    return hourdis +"å°æ—¶å‰";
 					} else {
-					    return "×òÌì" + " " + crhour+":"+crminute;
+					    return "æ˜¨å¤©" + " " + crhour+":"+crminute;
 					}
 			    } else if(daydis == 2) {
-				    return "Ç°Ìì" + " "+ crhour+":"+crminute;
+				    return "å‰å¤©" + " "+ crhour+":"+crminute;
 				} else {
-				    return crmonth + "ÔÂ" + crday +"ÈÕ" + " " +crhour+":"+crminute;
+				    return crmonth + "æœˆ" + crday +"æ—¥" + " " +crhour+":"+crminute;
 				}
 		    } else {
-			/* ÈÕÏàÍ¬ */
-				var hourdis = currhour - crhour;//Ê±²î
+			/* æ—¥ç›¸åŒ */
+				var hourdis = currhour - crhour;//æ—¶å·®
 			    if(hourdis == 0){
-				/* Ê±ÏàÍ¬ */
-					var minutedis = currminute - crminute;//·Ö²î
+				/* æ—¶ç›¸åŒ */
+					var minutedis = currminute - crminute;//åˆ†å·®
 				    if(minutedis == 0){
-                    /* ·ÖÏàÍ¬ */
-						return "¸Õ¸Õ";
+                    /* åˆ†ç›¸åŒ */
+						return "åˆšåˆš";
 					} else{
-					/* ·Ö²»Í¬ */
-						return minutedis +"·ÖÖÓÇ°";
+					/* åˆ†ä¸åŒ */
+						return minutedis +"åˆ†é’Ÿå‰";
 					}
 				} else if(hourdis == 1){
-                /* Ğ¡Ê±ÏàÁÚ */
-				     var mindis = 60-crminute+currminute;//·Ö²î
+                /* å°æ—¶ç›¸é‚» */
+				     var mindis = 60-crminute+currminute;//åˆ†å·®
                      if(mindis > 60){
-					     return hourdis+"Ğ¡Ê±Ç°";
+					     return hourdis+"å°æ—¶å‰";
 					 } else {
-					     return mindis + "·ÖÖÓÇ°";
+					     return mindis + "åˆ†é’Ÿå‰";
 					 }
 
 				} else if(hourdis < 12){
-				/* Ê®¶şĞ¡Ê±ÄÚ */
-					return hourdis+"Ğ¡Ê±Ç°";
+				/* åäºŒå°æ—¶å†… */
+					return hourdis+"å°æ—¶å‰";
 				} else {
-				/* Ê®¶şĞ¡Ê±Íâ */
+				/* åäºŒå°æ—¶å¤– */
 					return crhour+":"+crminute;
 				}
 			}
@@ -153,7 +153,7 @@ function smartDateFormat(utcDate){
 	}
 }
 
-/* ·µ»ØÄ³Ò»ÄêµÄÄ³Ò»ÔÂÓĞ¼¸Ìì */
+/* è¿”å›æŸä¸€å¹´çš„æŸä¸€æœˆæœ‰å‡ å¤© */
 function getDayOfMonth(year,month){
 	if(month == 2){
 	    if(year%4 == 0){
